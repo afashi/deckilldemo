@@ -34,11 +34,11 @@ public class SuccessKilled {
   }
 
   public Date getCreateTime() {
-    return createTime;
+    return (Date)createTime.clone();
   }
 
   public void setCreateTime(Date createTime) {
-    this.createTime = createTime;
+    this.createTime = (Date)createTime.clone();
   }
 
   public Seckill getSeckill() {
@@ -47,5 +47,16 @@ public class SuccessKilled {
 
   public void setSeckill(Seckill seckill) {
     this.seckill = seckill;
+  }
+
+  @Override
+  public String toString() {
+    return "SuccessKilled{" +
+            "seckillId=" + seckillId +
+            ", userPhone=" + userPhone +
+            ", state=" + state +
+            ", createTime=" + createTime +
+            ", seckill=" + seckill +
+            '}';
   }
 }

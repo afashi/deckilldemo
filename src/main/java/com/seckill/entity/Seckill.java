@@ -35,26 +35,38 @@ public class Seckill {
     }
 
     public Date getStartTime() {
-        return startTime;
+        return (Date) startTime.clone();
     }
 
     public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+        this.startTime = (Date) startTime.clone();
     }
 
     public Date getEndTime() {
-        return endTime;
+        return (Date)endTime.clone();
     }
 
     public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+        this.endTime = (Date) endTime.clone();
     }
 
     public Date getCreateTime() {
-        return createTime;
+        return (Date) createTime.clone();
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+        this.createTime = (Date) createTime.clone();
+    }
+
+    @Override
+    public String toString() {
+        return "Seckill{" +
+                "seckillId=" + seckillId +
+                ", name='" + name + '\'' +
+                ", number=" + number +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", createTime=" + createTime +
+                '}';
     }
 }
