@@ -43,11 +43,11 @@ public class Seckill {
     }
 
     public Date getEndTime() {
-        return (Date)endTime.clone();
+        return endTime;
     }
 
     public void setEndTime(Date endTime) {
-        this.endTime = (Date) endTime.clone();
+        this.endTime = endTime;
     }
 
     public Date getCreateTime() {
