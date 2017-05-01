@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" >
 <head th:include="common/layout :: htmlhead" th:with="title='Hello'"></head>
 
 <body>
@@ -6,8 +6,37 @@
 
 <div class="container">
     <div class="starter-template">
+        <div class="panel panel-default"></div>
+        <div class="panel-heading text-center">
+            <h2>秒杀列表</h2>
+        </div>
+        <div class="panel panel-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>库存</th>
+                        <th>开始时间</th>
+                        <th>结束时间</th>
+                        <th>创建时间</th>
+                        <th>详情页</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr  th:each="sk:${list}">
+                    <th scope="row" th:text="${sk.name}">1</th>
+                    <td th:text="${sk.number}"></td>
+                    <td th:text="${#dates.format(sk.startTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:text="${#dates.format(sk.endTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td th:text="${#dates.format(sk.endTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td>
+                        <a class="btn btn-link" th:href="@{/seckill/{id}/detail(id=${sk.seckillId})}" th:target="_blank">link</a>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
         <h1>Spring MVC / Thymeleaf / Bootstrap</h1>
-        <!--/*@thymesVar id="greeting" type="java.lang.String"*/-->
         <p class="lead" th:text="${greeting}">(greeting)</p>
         <p>The current time is <!--/*@thymesVar id="currentTime" type="com"*/-->
         <span th:text="${currentTime}">(time)</span></p>
@@ -15,9 +44,16 @@
         <div class="alert alert-info">信息！请注意这个信息。</div>
         <div class="alert alert-warning">警告！请不要提交。</div>
         <div class="alert alert-danger">错误！请进行一些更改。</div>
+        <div class="cd"></div>
 </div>
 
 <div th:include="common/layout :: footer" id="footer">(footer)</div>
 </div>
 </body>
+<style type="text/css">
+    .cd{
+        color: black;
+    }
+
+</style>
 </html>

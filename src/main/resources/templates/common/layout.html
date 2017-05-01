@@ -9,8 +9,9 @@
     <!--/*@thymesVar id="title" type="com"*/-->
     <title th:text="${title}">(title)</title>
 
-    <link th:href="@{/webjars/bootstrap/3.3.7/dist/css/bootstrap.css}" rel="stylesheet"></link>
-    <link th:href="@{/css/starter.css}" rel="stylesheet"></link>
+    <!--<link th:href="@{/webjars/bootstrap/3.3.7/dist/css/bootstrap.css}" rel="stylesheet"/>-->
+    <link href="/webjars/bootstrap/3.3.7/dist/css/bootstrap.css" rel="stylesheet"/>
+    <!--suppress HtmlUnknownTarget -->
 </head>
 
 <body>
@@ -27,7 +28,6 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -48,8 +48,10 @@
     <div class="container">
         <p class="muted credit">Spring MVC/Thymeleaf/Bootstrap Project Template</p>
     </div>
-    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/jquery/3.2.1/dist/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js}"></script>
+    <script th:src="@{https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js}"></script>
+    <script th:src="@{https://cdn.bootcss.com/jquery.countdown/2.1.0/jquery.countdown.js}"></script>
 </div>
 
 </body>

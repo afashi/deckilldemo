@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/layout :: htmlhead" th:with="title='Hello'"></head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>秒杀详情页</title>
 </head>
 <body>
-
+<div class="container">
+    <div class="panel panel-default text-center">
+        <div class="panel-heading" th:text="${seckill.name}"></div>
+    </div>
+    <div class="panel-body"></div>
+</div>
+<div id="killPhoneModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center">
+                    <span class="glyphicon glyphicon-phone"></span>秒杀电话：
+                </h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <input type="text" name="killphone" id="killphoneKey" placeholder="填手机号^O^" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span id="killphoneMessage" class="glyphicon"></span>
+                <button type="button" id="killPhoneBtn" class="btn btn-success">
+                    <span class="glyphicon glyphicon-phone"></span>
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="common/layout :: footer" id="footer">(footer)</div>
+</div>
 </body>
+<script type="text/javascript">
+    $(function () {
+        var killPhoneModal = $('#killPhoneModal');
+        killPhoneModal.modal({
+            show: true, //显示弹出层
+            backdrop: 'static', //禁止位置关闭
+            keyboard: false  //关闭键盘事件
+        });
+
+    });
+</script>
 </html>
