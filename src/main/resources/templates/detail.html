@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="common/layout :: htmlhead" th:with="title='Hello'"></head>
+<head th:include="common/layout :: htmlhead" th:with="title='Hello'">
+    <script src="../static/js/seckill.js"></script>
+</head>
     <meta charset="UTF-8">
     <title>秒杀详情页</title>
 </head>
@@ -8,8 +10,13 @@
 <div class="container">
     <div class="panel panel-default text-center">
         <div class="panel-heading" th:text="${seckill.name}"></div>
+        <div class="panel-body">
+            <h2 class="text-danger">
+                <span  class="glyphicon glyphicon-time"></span>
+                <div  class="glyphicon" id="seckill-box"></div>
+            </h2>
+        </div>
     </div>
-    <div class="panel-body"></div>
 </div>
 <div id="killPhoneModal" class="modal fade">
     <div class="modal-dialog">
@@ -38,16 +45,18 @@
 </div>
 <div th:include="common/layout :: footer" id="footer">(footer)</div>
 </div>
+<script th:src="@{https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js}"></script>
+<script th:src="@{https://cdn.bootcss.com/jquery.countdown/2.1.0/jquery.countdown.js}"></script>
+<script th:src="@{/js/seckill.js}"></script>
 </body>
-<script type="text/javascript">
+<script type="text/javascript" th:inline="javascript">
     $(function () {
-        var killPhoneModal = $('#killPhoneModal');
-        killPhoneModal.modal({
-            show: true, //显示弹出层
-            backdrop: 'static', //禁止位置关闭
-            keyboard: false  //关闭键盘事件
-        });
+        seckill.detail.init({
 
+            seckillId :  /*[[${seckill.seckillId}]]*/,
+            startTime :  /*[[${seckill.startTime.time}]]*/,
+            endTime : /*[[${seckill.endTime.time}]]*/
+        });
     });
 </script>
 </html>

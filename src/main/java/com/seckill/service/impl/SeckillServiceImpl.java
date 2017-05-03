@@ -42,7 +42,7 @@ public class SeckillServiceImpl implements SeckillService {
 
     @Override
     public List<Seckill> getSeckillList() {
-        return seckillDao.queryAll(0, 3);
+        return seckillDao.queryAll(0, 10);
     }
 
     @Override

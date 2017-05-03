@@ -30,7 +30,7 @@
                     <td th:text="${#dates.format(sk.endTime,'yyyy-MM-dd HH:mm:ss')}"></td>
                     <td th:text="${#dates.format(sk.endTime,'yyyy-MM-dd HH:mm:ss')}"></td>
                     <td>
-                        <a class="btn btn-link" th:href="@{/seckill/{id}/detail(id=${sk.seckillId})}" th:target="_blank">link</a>
+                        <a class="btn btn-default" th:href="@{/seckill/{id}/detail(id=${sk.seckillId})}" th:target="_blank">link</a>
                     </td>
                   </tr>
                 </tbody>
