@@ -65,9 +65,9 @@ public class SeckillController {
 
         try {
             Exposer exposer = seckillService.exposeSeckillUrl(seckillId);
-            seckillResult = new SeckillResult<Exposer>(true, exposer);
+            seckillResult = new SeckillResult<>(true, exposer);
         } catch (Exception e) {
-            seckillResult = new SeckillResult<Exposer>(false, e.getMessage());
+            seckillResult = new SeckillResult<>(false, e.getMessage());
             logger.error(e.getMessage(), e);
         }
         return seckillResult;

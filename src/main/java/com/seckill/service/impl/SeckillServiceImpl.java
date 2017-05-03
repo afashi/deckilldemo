@@ -11,7 +11,6 @@ import com.seckill.exception.RepeatKillException;
 import com.seckill.exception.SeckillCloseException;
 import com.seckill.exception.SeckillException;
 import com.seckill.service.SeckillService;
-import org.apache.tomcat.util.security.MD5Encoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class SeckillServiceImpl implements SeckillService {
     private SuccessKilledDao successKilledDao;
 
     //盐值
-    private final String slat = "one slat";
+    private static final String slat = "one slat";
 
 
     @Override
@@ -103,7 +103,12 @@ public class SeckillServiceImpl implements SeckillService {
 
     private String getMd5(long seckillId) {
         String base = seckillId + "/" + slat;
-        String md5 = DigestUtils.md5DigestAsHex(base.getBytes());
+        String md5 = null;
+        try {
+            md5 = DigestUtils.md5DigestAsHex(base.getBytes("UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            throw new SeckillException(e.getMessage());
+        }
         return md5;
     }
 }
